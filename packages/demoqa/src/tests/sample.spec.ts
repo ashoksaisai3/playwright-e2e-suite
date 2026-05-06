@@ -3,6 +3,8 @@ import { FormPage } from '../pages/formPage';
 
 test('DemoQA Practice Form Submission', async ({ page, testData }) => {
 
+  page.setDefaultTimeout(60000);
+
   const formPage = new FormPage(page);
 
   await formPage.navigate();

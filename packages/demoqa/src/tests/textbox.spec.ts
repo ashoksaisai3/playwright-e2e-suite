@@ -2,7 +2,11 @@ import { test, expect } from '@playwright/test';
 
 test('DemoQA Text Box Validation', async ({ page }) => {
 
+  test.setTimeout(120000);
+
   await page.goto('https://demoqa.com/text-box');
+
+  await page.waitForLoadState('networkidle');
 
   await page.fill('#userName', 'Ashok');
   await page.fill('#userEmail', 'ashoksai3@gmail.com');
@@ -10,6 +14,7 @@ test('DemoQA Text Box Validation', async ({ page }) => {
   await page.fill('#permanentAddress', 'Hyderabad');
 
   await page.locator('#submit').scrollIntoViewIfNeeded();
+
   await page.click('#submit');
 
   const output = page.locator('#output');
